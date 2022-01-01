@@ -9,7 +9,7 @@ const Search = () => {
 
 
 	const fetchSearch = async () => {
-		const response = await fetch(`https://imdb-api.com/API/AdvancedSearch/k_v4s0xhy8?title=Avengers`)
+		const response = await fetch(`https://imdb-api.com/API/AdvancedSearch/k_v4s0xhy8?title=${inputSearch}`)
 		const data = await response.json();
 
 		setContent(data.results);
@@ -17,7 +17,7 @@ const Search = () => {
 
 	// console.log(inputSearch)
 	useEffect(() => {
-		window.scroll(0,0);
+		// window.scroll(0,0);
 		fetchSearch();
 	}, [])
 
