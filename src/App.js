@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Route, BrowserRouter, Switch} from 'react-router-dom';
 import Container from '@mui/material/Container';
 import Header from './components/Header/Header';
@@ -9,6 +9,20 @@ import './App.css';
 
 
 function App() {
+  const [content, setContent] = useState([]);
+
+  const fetchModal = async () => {
+    const response = await fetch('https://imdb-api.com/en/API/FullCast/k_v4s0xhy8/tt0111161')
+    const data = await response.json();
+
+    setContent(data);
+  }
+
+  console.log(content)
+  useEffect(() => {
+    fetchModal()
+  },[])
+
   return (
     <BrowserRouter>
       <Header />
@@ -20,7 +34,7 @@ function App() {
           </Switch>
         </Container>
       </div>
-      <SimpleBottomNavigation/>
+      <SimpleBottomNavigation />
     </BrowserRouter>
   );
 }

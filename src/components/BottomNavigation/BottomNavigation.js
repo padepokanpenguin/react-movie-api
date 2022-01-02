@@ -1,20 +1,46 @@
 import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import MovieCreationOutlinedIcon from '@mui/icons-material/MovieCreationOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-import {useHistory} from 'react-router-dom';
+
 
 export default function SimpleBottomNavigation() {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState('');
   const history = useHistory();
 
+  useEffect(() => {
+    getLocalStorage()
+  }, [])
 
   useEffect(() => {
-    if(value===0) history.push('/')
-        else history.push('./search')
+    pageHandler()
+    // console.log(history)
   }, [value])
+
+  const pageHandler = () => {
+    if (value === 0) history.push('/')
+      else if (value === 1) history.push('/search')
+  }
+  
+
+
+  // Local Storage
+  const saveLocalStorage = () => {
+    localStorage.setItem('value',setValue)
+  }
+
+  const getLocalStorage = () => {
+    if (localStorage.getItem('value') === null ) {
+      localStorage.setItem('value', 0)
+    } else {
+      let valueLocal = localStorage.getItem('value')
+      setValue(valueLocal);
+    }
+  }
+ 
 
   return (
     <Box sx={{ 	width: "100vw",

@@ -15,7 +15,6 @@ const Search = () => {
 		setContent(data.results);
 	}
 
-	// console.log(inputSearch)
 	useEffect(() => {
 		// window.scroll(0,0);
 		fetchSearch();

@@ -1,10 +1,9 @@
-import React, {props} from 'react';
-import {img_300, unavailable} from '../Config/Config';
+import React from 'react';
 
 const listContent = (props) => {
 	return (
 		<div className="movie-card">
-			<img src={props.poster} />
+			<img src={props.poster} alt="poster"/>
 			<div>{props.title}</div>
 		</div>
 		)
