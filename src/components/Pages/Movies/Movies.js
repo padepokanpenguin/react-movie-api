@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import ListContent from '../../Content/Content';
-import Modal from '../../Modal/Modal';
 
 const Movies = () => {
 
@@ -21,9 +20,8 @@ const Movies = () => {
 	<div>
 		<span className="title">Top Movies</span>
 		<div className="movies">
-			<Modal />
 			{
-				content && content.map((c) => <ListContent key={c.id} id={c.id} poster={c.image} title={c.fullTitle} rating={c.imDbRating} />)
+				content && content.map((c) => <ListContent key={c.id} id={c.id} poster={c.image} title={c.fullTitle} />)
 			}
 		</div>
 	</div>

@@ -11,35 +11,7 @@ export default function SimpleBottomNavigation() {
   const [value, setValue] = useState('');
   const history = useHistory();
 
-  useEffect(() => {
-    getLocalStorage()
-  }, [])
 
-  useEffect(() => {
-    pageHandler()
-    // console.log(history)
-  }, [value])
-
-  const pageHandler = () => {
-    if (value === 0) history.push('/')
-      else if (value === 1) history.push('/search')
-  }
-  
-
-
-  // Local Storage
-  const saveLocalStorage = () => {
-    localStorage.setItem('value',setValue)
-  }
-
-  const getLocalStorage = () => {
-    if (localStorage.getItem('value') === null ) {
-      localStorage.setItem('value', 0)
-    } else {
-      let valueLocal = localStorage.getItem('value')
-      setValue(valueLocal);
-    }
-  }
  
 
   return (
@@ -58,6 +30,7 @@ export default function SimpleBottomNavigation() {
         showLabels
         value={value}
         onChange={(event, newValue) => {
+          localStorage.setItem('value', JSON.stringify(value))
           setValue(newValue);
         }}
       >

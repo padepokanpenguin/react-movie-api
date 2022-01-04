@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import SimpleBottomNavigation from './components/BottomNavigation/BottomNavigation';
 import Movies from './components/Pages/Movies/Movies';
 import Search from './components/Pages/Search/Search';
+import Modal from './components/Modal/Modal';
 import './App.css';
 
 
@@ -18,7 +19,6 @@ function App() {
     setContent(data);
   }
 
-  console.log(content)
   useEffect(() => {
     fetchModal()
   },[])
@@ -27,6 +27,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <div className="app">
+        <Modal id={content.id} actors={content.actors?.map((act) => act.name)} director={content.items} writer={content.items} />
         <Container>
           <Switch>
             <Route path='/' component={Movies} exact/>
