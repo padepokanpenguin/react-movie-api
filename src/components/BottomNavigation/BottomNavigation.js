@@ -1,16 +1,29 @@
 import React, {useState, useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useLocation} from 'react-router-dom';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import MovieCreationOutlinedIcon from '@mui/icons-material/MovieCreationOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 
+const appPage = [
+{
+  id: 0,
+  path: "/",
+  title: "movies",
+},
+{
+  id: 1,
+  path: "/search",
+  title: "search page",
+}
+]
+
 
 export default function SimpleBottomNavigation() {
-  const [value, setValue] = useState('');
+  const location = useLocation();
+  const [value, setValue] = useState(appPage.find((page) => page.path === location.pathname).id);
   const history = useHistory();
-
 
  
 
@@ -30,8 +43,8 @@ export default function SimpleBottomNavigation() {
         showLabels
         value={value}
         onChange={(event, newValue) => {
-          localStorage.setItem('value', JSON.stringify(value))
           setValue(newValue);
+          history.push(appPage.find((page) => page.id === newValue)?.path)
         }}
       >
         <BottomNavigationAction label="Top Movies" icon={<MovieCreationOutlinedIcon />} />
