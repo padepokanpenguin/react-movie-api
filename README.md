@@ -9,5 +9,5 @@ and then run
 for running the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=padepokanpenguin&show_owner=true&repo=react-introduction-academind-course)](https://github.com/padepokanpenguin/react-movie-api)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=padepokanpenguin&show_owner=true&repo=react-movie-api)](https://github.com/padepokanpenguin/react-movie-api)
 
